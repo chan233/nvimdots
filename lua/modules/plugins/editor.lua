@@ -1,7 +1,7 @@
 local editor = {}
 
 editor["olimorris/persisted.nvim"] = {
-	lazy = true,
+	lazy = false,
 	cmd = {
 		"SessionToggle",
 		"SessionStart",
@@ -126,6 +126,14 @@ editor["nvim-treesitter/nvim-treesitter"] = {
 			config = require("editor.ts-context-commentstring"),
 		},
 	},
+}
+editor["mzlogin/vim-markdown-toc"] = {
+	ft = { "markdown" }, -- 仅在 Markdown 缓冲区加载
+	cmd = { "GenTocGFM", "UpdateToc" }, -- 惰性加载命令
+	init = function() -- 可选：全局设置
+		vim.g.vmt_auto_update_on_save = 1
+		vim.g.vmt_list_item_char = "-"
+	end,
 }
 
 return editor

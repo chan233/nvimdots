@@ -116,6 +116,12 @@ local load_core = function()
 
 	vim.api.nvim_set_option_value("background", settings.background, {})
 	vim.cmd.colorscheme(settings.colorscheme)
+	vim.opt.guifont = "JetBrainsMono Nerd Font:h16"
+	vim.opt.clipboard = "unnamedplus"
+	vim.keymap.set("v", "<C-c>", '"+y')
+	vim.keymap.set("n", "<C-v>", '"+p')
+	vim.keymap.set("i", "<C-v>", "<C-r>+")
+	vim.keymap.set("c", "<C-v>", "<C-r>+")
 end
 
 load_core()

@@ -15,7 +15,7 @@ return function()
 		save_dir = vim.fn.expand(vim.fn.stdpath("data") .. "/sessions/"),
 		autostart = true,
 		-- Set `lazy = false` in `plugins/editor.lua` to enable this
-		autoload = false,
+		autoload = true,
 		follow_cwd = true,
 		use_git_branch = true,
 		should_save = function()

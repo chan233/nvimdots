@@ -16,18 +16,17 @@ local mappings = {
 		["t|<C-w>k"] = map_cmd("<Cmd>wincmd k<CR>"):with_silent():with_noremap():with_desc("window: Focus up"),
 
 		-- Builtins: Tabpage
-		["n|tn"] = map_cr("tabnew"):with_noremap():with_silent():with_desc("tab: Create a new tab"),
-		["n|tk"] = map_cr("tabnext"):with_noremap():with_silent():with_desc("tab: Move to next tab"),
-		["n|tj"] = map_cr("tabprevious"):with_noremap():with_silent():with_desc("tab: Move to previous tab"),
-		["n|to"] = map_cr("tabonly"):with_noremap():with_silent():with_desc("tab: Only keep current tab"),
+		["n|<leader>tn"] = map_cr("tabnew"):with_noremap():with_silent():with_desc("tab: Create a new tab"),
+		["n|<leader>tk"] = map_cr("tabnext"):with_noremap():with_silent():with_desc("tab: Move to next tab"),
+		["n|<leader>tj"] = map_cr("tabprevious"):with_noremap():with_silent():with_desc("tab: Move to previous tab"),
+		["n|<leader>to"] = map_cr("tabonly"):with_noremap():with_silent():with_desc("tab: Only keep current tab"),
+		["n|<leader>tc"] = map_cr("tabclose"):with_noremap():with_silent():with_desc("tab: Close current tab"),
 	},
 	plugins = {
 		-- Plugin: nvim-bufdel
 		["n|<A-q>"] = map_cr("BufDel"):with_noremap():with_silent():with_desc("buffer: Close current"),
 
 		-- Plugin: bufferline.nvim
-		["n|<A-i>"] = map_cr("BufferLineCycleNext"):with_noremap():with_silent():with_desc("buffer: Switch to next"),
-		["n|<A-o>"] = map_cr("BufferLineCyclePrev"):with_noremap():with_silent():with_desc("buffer: Switch to prev"),
 		["n|<A-S-i>"] = map_cr("BufferLineMoveNext")
 			:with_noremap()
 			:with_silent()
@@ -38,6 +37,16 @@ local mappings = {
 			:with_desc("buffer: Move current to prev"),
 		["n|<leader>be"] = map_cr("BufferLineSortByExtension"):with_noremap():with_desc("buffer: Sort by extension"),
 		["n|<leader>bd"] = map_cr("BufferLineSortByDirectory"):with_noremap():with_desc("buffer: Sort by directory"),
+
+		["n|<leader>bn"] = map_cr("BufferLineCycleNext")
+			:with_noremap()
+			:with_silent()
+			:with_desc("buffer: Switch to next"),
+		["n|<leader>bp"] = map_cr("BufferLineCyclePrev")
+			:with_noremap()
+			:with_silent()
+			:with_desc("buffer: Switch to prev"),
+
 		["n|<A-1>"] = map_cr("BufferLineGoToBuffer 1"):with_noremap():with_silent():with_desc("buffer: Goto buffer 1"),
 		["n|<A-2>"] = map_cr("BufferLineGoToBuffer 2"):with_noremap():with_silent():with_desc("buffer: Goto buffer 2"),
 		["n|<A-3>"] = map_cr("BufferLineGoToBuffer 3"):with_noremap():with_silent():with_desc("buffer: Goto buffer 3"),
