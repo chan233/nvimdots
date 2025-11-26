@@ -46,7 +46,11 @@ local mappings = {
 			:with_noremap()
 			:with_silent()
 			:with_desc("buffer: Switch to prev"),
+		-- 关闭当前 buffer
+		["n|<leader>bc"] = map_cr("bdelete"):with_noremap():with_silent():with_desc("buffer: Close current"),
 
+		-- 切换到最近（上一个）buffer
+		["n|<leader>bl"] = map_cr("b#"):with_noremap():with_silent():with_desc("buffer: Switch to last"),
 		["n|<A-1>"] = map_cr("BufferLineGoToBuffer 1"):with_noremap():with_silent():with_desc("buffer: Goto buffer 1"),
 		["n|<A-2>"] = map_cr("BufferLineGoToBuffer 2"):with_noremap():with_silent():with_desc("buffer: Goto buffer 2"),
 		["n|<A-3>"] = map_cr("BufferLineGoToBuffer 3"):with_noremap():with_silent():with_desc("buffer: Goto buffer 3"),
