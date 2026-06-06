@@ -3,14 +3,7 @@ local editor = {}
 editor["olimorris/persisted.nvim"] = {
 	lazy = false,
 	cmd = {
-		"SessionToggle",
-		"SessionStart",
-		"SessionStop",
-		"SessionSave",
-		"SessionLoad",
-		"SessionLoadLast",
-		"SessionLoadFromFile",
-		"SessionDelete",
+		"Persisted",
 	},
 	config = require("editor.persisted"),
 }

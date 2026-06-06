@@ -1,6 +1,8 @@
 local function switch_source_header_splitcmd(bufnr, splitcmd)
-	bufnr = require("lspconfig").util.validate_bufnr(bufnr)
-	local clangd_client = require("lspconfig").util.get_active_client_by_name(bufnr, "clangd")
+	if bufnr == nil or bufnr == 0 then
+		bufnr = vim.api.nvim_get_current_buf()
+	end
+	local clangd_client = vim.lsp.get_clients({ bufnr = bufnr, name = "clangd" })[1]
 	local params = { uri = vim.uri_from_bufnr(bufnr) }
 	if clangd_client then
 		clangd_client.request("textDocument/switchSourceHeader", params, function(err, result)
@@ -35,7 +37,7 @@ end
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/clangd.lua
 return function(defaults)
-	require("lspconfig").clangd.setup({
+	vim.lsp.config("clangd", {
 		on_attach = defaults.on_attach,
 		capabilities = vim.tbl_deep_extend("keep", { offsetEncoding = { "utf-16", "utf-8" } }, defaults.capabilities),
 		single_file_support = true,

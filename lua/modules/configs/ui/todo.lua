@@ -33,7 +33,6 @@ return function()
 			exclude = {
 				"alpha",
 				"checkhealth",
-				"dap-repl",
 				"diff",
 				"help",
 				"log",

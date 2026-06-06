@@ -1,5 +1,4 @@
 return function()
-	local nvim_lsp = require("lspconfig")
 	require("completion.neoconf").setup()
 	require("completion.mason").setup()
 	require("completion.mason-lspconfig").setup()
@@ -14,7 +13,8 @@ return function()
 			_opts = require("completion.servers.dartls")
 		end
 		local final_opts = vim.tbl_deep_extend("keep", _opts, opts)
-		nvim_lsp.dartls.setup(final_opts)
+		vim.lsp.config("dartls", final_opts)
+		vim.lsp.enable("dartls")
 	end
 
 	pcall(require, "user.configs.lsp")

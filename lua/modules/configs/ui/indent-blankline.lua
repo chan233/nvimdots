@@ -553,7 +553,6 @@ return function()
 				"", -- for all buffers without a file type
 				"alpha",
 				"checkhealth",
-				"dap-repl",
 				"diff",
 				"fugitive",
 				"fugitiveblame",

@@ -4,10 +4,6 @@ local settings = {}
 ---@type boolean
 settings["use_ssh"] = true
 
--- Set to false if you don't use Copilot.
----@type boolean
-settings["use_copilot"] = true
-
 -- Set to false if you don't want to format on save.
 ---@type boolean
 settings["format_on_save"] = true
@@ -119,7 +115,6 @@ settings["lsp_deps"] = {
 	"jsonls",
 	"lua_ls",
 	"pylsp",
-	"gopls",
 }
 
 -- General-purpose sources for none-ls to install during bootstrap.
@@ -127,21 +122,10 @@ settings["lsp_deps"] = {
 ---@type string[]
 settings["null_ls_deps"] = {
 	"clang_format",
-	"gofumpt",
-	"goimports",
 	"prettier",
 	"shfmt",
 	"stylua",
 	"vint",
-}
-
--- Debug Adapter Protocol (DAP) clients to install and configure during bootstrap.
--- Supported DAPs: https://github.com/jay-babu/mason-nvim-dap.nvim/blob/main/lua/mason-nvim-dap/mappings/source.lua
----@type string[]
-settings["dap_deps"] = {
-	"codelldb", -- C-Family
-	"delve", -- Go
-	"python", -- Python (debugpy)
 }
 
 -- Treesitter parsers to install during bootstrap.
@@ -152,8 +136,6 @@ settings["treesitter_deps"] = {
 	"c",
 	"cpp",
 	"css",
-	"go",
-	"gomod",
 	"html",
 	"javascript",
 	"json",
@@ -164,7 +146,6 @@ settings["treesitter_deps"] = {
 	"markdown",
 	"markdown_inline",
 	"python",
-	"rust",
 	"typescript",
 	"vimdoc",
 	"vue",
@@ -186,7 +167,7 @@ settings["gui_config"] = {
 settings["neovide_config"] = {
 	no_idle = false,
 	input_ime = true,
-	fullscreen = true,
+	fullscreen = false,
 	padding_left = 8,
 	confirm_quit = true,
 	cursor_vfx_mode = "torpedo",

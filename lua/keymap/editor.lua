@@ -53,9 +53,10 @@ local mappings = {
 	},
 	plugins = {
 		-- Plugin: persisted.nvim
-		["n|<leader>ss"] = map_cu("SessionSave"):with_noremap():with_silent():with_desc("session: Save"),
-		["n|<leader>sl"] = map_cu("SessionLoad"):with_noremap():with_silent():with_desc("session: Load current"),
-		["n|<leader>sd"] = map_cu("SessionDelete"):with_noremap():with_silent():with_desc("session: Delete"),
+		["n|<leader>ss"] = map_cu("Persisted save"):with_noremap():with_silent():with_desc("session: Save"),
+		["n|<leader>sl"] = map_cu("Persisted load"):with_noremap():with_silent():with_desc("session: Load current"),
+		["n|<leader>sL"] = map_cu("Persisted load_last"):with_noremap():with_silent():with_desc("session: Load last"),
+		["n|<leader>sd"] = map_cu("Persisted delete"):with_noremap():with_silent():with_desc("session: Delete"),
 
 		-- Plugin: comment.nvim
 		["n|gcc"] = map_callback(function()

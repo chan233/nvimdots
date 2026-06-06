@@ -28,7 +28,6 @@ vim.api.nvim_create_autocmd("FileType", {
 		"terminal",
 		"prompt",
 		"toggleterm",
-		"copilot",
 		"startuptime",
 		"tsplayground",
 	},
@@ -36,6 +35,22 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.bo[event.buf].buflisted = false
 		vim.api.nvim_buf_set_keymap(event.buf, "n", "q", "<Cmd>close<CR>", { silent = true })
 	end,
+})
+
+local function rime_ascii_mode()
+	if vim.fn.executable("fcitx5-remote") ~= 1 then
+		return
+	end
+
+	vim.fn.jobstart({ "sh", "-c", "fcitx5-remote -s rime >/dev/null 2>&1; fcitx5-remote -c >/dev/null 2>&1" }, {
+		detach = true,
+	})
+end
+
+vim.api.nvim_create_autocmd({ "VimEnter", "FocusGained", "InsertLeave", "CmdlineEnter" }, {
+	group = vim.api.nvim_create_augroup("RimeAsciiMode", { clear = true }),
+	desc = "Keep Rime selected but default to ASCII mode in Neovim",
+	callback = rime_ascii_mode,
 })
 
 -- Hold off on configuring anything related to the LSP until LspAttach
@@ -132,7 +147,6 @@ function autocmd.load_autocmds()
 			{ "FileType", "*", "setlocal formatoptions-=cro" },
 			{ "FileType", "alpha", "setlocal showtabline=0" },
 			{ "FileType", "markdown", "setlocal wrap" },
-			{ "FileType", "dap-repl", "lua require('dap.ext.autocompl').attach()" },
 			{
 				"FileType",
 				"c,cpp",

@@ -127,31 +127,4 @@ tool["nvim-telescope/telescope.nvim"] = {
 	},
 }
 
-----------------------------------------------------------------------
---                           DAP Plugins                            --
-----------------------------------------------------------------------
-tool["mfussenegger/nvim-dap"] = {
-	lazy = true,
-	cmd = {
-		"DapSetLogLevel",
-		"DapShowLog",
-		"DapContinue",
-		"DapToggleBreakpoint",
-		"DapToggleRepl",
-		"DapStepOver",
-		"DapStepInto",
-		"DapStepOut",
-		"DapTerminate",
-	},
-	config = require("tool.dap"),
-	dependencies = {
-		{ "jay-babu/mason-nvim-dap.nvim" },
-		{
-			"rcarriga/nvim-dap-ui",
-			dependencies = "nvim-neotest/nvim-nio",
-			config = require("tool.dap.dapui"),
-		},
-	},
-}
-
 return tool

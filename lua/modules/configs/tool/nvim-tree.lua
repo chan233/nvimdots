@@ -22,7 +22,7 @@ return function()
 			symlink_destination = true,
 			highlight_git = "all",
 			root_folder_label = ":.:s?.*?/..?",
-			special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md", "CMakeLists.txt" },
+			special_files = { "Makefile", "README.md", "readme.md", "CMakeLists.txt" },
 			indent_markers = {
 				enable = true,
 				inline_arrows = true,
@@ -84,7 +84,6 @@ return function()
 							"terminal",
 						},
 						filetype = {
-							"dap-repl",
 							"diff",
 							"fugitive",
 							"fugitiveblame",

@@ -11,7 +11,6 @@ return function()
 		-- Exclude filetypes or buftypes from highlighting
 		exclude_filetypes = {
 			"alpha",
-			"dap-repl",
 			"fugitive",
 			"git",
 			"notify",

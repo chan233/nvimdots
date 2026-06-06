@@ -33,23 +33,6 @@ M.setup = function()
 	---A handler to setup all servers defined under `completion/servers/*.lua`
 	---@param lsp_name string
 	local function mason_lsp_handler(lsp_name)
-		-- rust_analyzer is configured using mrcjkb/rustaceanvim
-		-- warn users if they have set it up manually
-		if lsp_name == "rust_analyzer" then
-			local config_exist = pcall(require, "completion.servers." .. lsp_name)
-			if config_exist then
-				vim.notify(
-					[[
-`rust_analyzer` is configured independently via `mrcjkb/rustaceanvim`. To get rid of this warning,
-please REMOVE your LSP configuration (rust_analyzer.lua) from the `servers` directory and configure
-`rust_analyzer` using the appropriate init options provided by `rustaceanvim` instead.]],
-					vim.log.levels.WARN,
-					{ title = "nvim-lspconfig" }
-				)
-			end
-			return
-		end
-
 		local ok, custom_handler = pcall(require, "user.configs.lsp-servers." .. lsp_name)
 		local default_ok, default_handler = pcall(require, "completion.servers." .. lsp_name)
 		-- Use preset if there is no user definition
@@ -63,7 +46,7 @@ please REMOVE your LSP configuration (rust_analyzer.lua) from the `servers` dire
 			vim.lsp.enable(lsp_name)
 		elseif type(custom_handler) == "function" then
 			--- Case where language server requires its own setup
-			--- Make sure to call require("lspconfig")[lsp_name].setup() in the function
+			--- Make sure to call vim.lsp.config(lsp_name, opts) in the function
 			--- See `clangd.lua` for example.
 			custom_handler(opts)
 			vim.lsp.enable(lsp_name)
